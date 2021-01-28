@@ -8,7 +8,7 @@ export default function Home() {
 
     // Get Table 
     const getTables = () => {
-      Axios.get("http://localhost:5000/tables")
+      Axios.get("/tables")
       .then(Res => setTables(Res.data.tables))
       .catch(err => console.log(err));
     }
@@ -16,7 +16,7 @@ export default function Home() {
 
     // Get Orders
     const getOrders = () => {
-      Axios.get("http://localhost:5000/order/")
+      Axios.get("/order/")
       .then(Res => setOrders(Res.data.order))
       .catch(err => console.log(err));
     }
@@ -27,24 +27,6 @@ export default function Home() {
 
 
     }, [])
-
-
-    // useEffect(() => {
-    //     console.log("effect");
-        
-
-
-    //     const totalPayment = tables.reduce(function(arr, vel) {
-    //         return {
-    //             pay: arr.pay + vel.pay
-    //         } 
-    //     });
-    //     console.log(tables);
-    //     console.log(totalPayment);
-
-    // }, [tables])
-
-
 
 
     return (

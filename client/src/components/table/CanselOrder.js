@@ -7,7 +7,7 @@ export default function CanselOrder({prodects, order, getOrders, totalBill}) {
   const {newMessage} = useContext(MessageContext);
 
   function canselOrder() {
-    Axios.post("http://localhost:5000/order/cansel/", {id: order._id})
+    Axios.post("/order/cansel/", {id: order._id})
     .then(() => {
       newMessage("מוצר נמחק בהצלחה");
       getOrders();      

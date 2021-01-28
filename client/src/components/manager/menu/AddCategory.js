@@ -12,7 +12,7 @@ export default function AddCatagory({getCategorys}) {
 
   function addCategory(e) {
     if(title != null && icon != null){
-      Axios.post("http://localhost:5000/category/add/", {title: title, icon: icon})
+      Axios.post("/category/add/", {title: title, icon: icon})
       .then(() => {
         newMessage("הקטגוריה נוספה בהצלחה", "success");
         getCategorys();

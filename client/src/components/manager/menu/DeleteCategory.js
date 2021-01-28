@@ -7,7 +7,7 @@ export default function DeleteCatagory({category, getCategorys}) {
   const {newMessage} = useContext(MessageContext);
 
   function removeCategory() {
-    Axios.post("http://localhost:5000/category/remove/", {id: category._id})
+    Axios.post("/category/remove/", {id: category._id})
     .then(() => {
       newMessage("קטגורייה נמחקה בהצלחה");
       getCategorys();

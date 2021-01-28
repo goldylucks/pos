@@ -7,7 +7,7 @@ export default function DeleteProdect({prodect, getProdects}) {
   const {newMessage} = useContext(MessageContext);
 
   function removeProdect() {
-    Axios.post("http://localhost:5000/prodect/remove/", {id: prodect._id})
+    Axios.post("/prodect/remove/", {id: prodect._id})
     .then(() => {
       newMessage("מוצר נמחק בהצלחה");
       getProdects();

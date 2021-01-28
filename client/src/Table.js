@@ -36,7 +36,7 @@ export default function Table() {
 
     // Get Table 
     const getTables = () => {
-      Axios.get(`http://localhost:5000/tables/byID/?id=${id}`)
+      Axios.get(`/tables/byID/?id=${id}`)
       .then(Res => setTable(Res.data))
       .catch(err => console.log(err));
     }
@@ -44,7 +44,7 @@ export default function Table() {
 
     // Get Orders
     const getOrders = () => {
-      Axios.post(`http://localhost:5000/order/byTable/?tid=${id}`)
+      Axios.post(`/order/byTable/?tid=${id}`)
       .then(Res => setOrders(Res.data.order))
       .catch(err => console.log(err));
     }
@@ -52,7 +52,7 @@ export default function Table() {
 
     // get prodects
     const getProdects = () => {
-      Axios.get("http://localhost:5000/prodect/")
+      Axios.get("/prodect/")
       .then(Res => setProdects(Res.data.prodect))
       .catch(err => console.log(err));
     }
@@ -65,7 +65,7 @@ export default function Table() {
         total += Number(thisPrice);
       });
         
-      Axios.post("http://localhost:5000/tables/totalPrice", {id: table._id, total: total})
+      Axios.post("/tables/totalPrice", {id: table._id, total: total})
       .then(() => {
         getTables();
       });

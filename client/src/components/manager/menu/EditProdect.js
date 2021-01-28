@@ -17,7 +17,7 @@ export default function EditCategory({categorys, prodect, getProdects}) {
 
   function  editProdcet() {
     if(title !== null && cid !== null && price !== null){
-      Axios.post("http://localhost:5000/prodect/edit/", {id: prodect._id, title: title, cid: cid, price: price})
+      Axios.post("/prodect/edit/", {id: prodect._id, title: title, cid: cid, price: price})
       .then(() => {
         newMessage("מוצר נשמרה בהצלחה");
         getProdects();

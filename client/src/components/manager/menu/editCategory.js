@@ -15,7 +15,7 @@ export default function EditCategory({category, getCategorys}) {
 
   function  editCategory() {
     if(title !== null && icon !== null){
-      Axios.post("http://localhost:5000/category/edit/", {id: category._id, title: title, icon: icon})
+      Axios.post("/category/edit/", {id: category._id, title: title, icon: icon})
       .then(() => {
         newMessage("קטגוריה נשמרה בהצלחה");
         getCategorys();

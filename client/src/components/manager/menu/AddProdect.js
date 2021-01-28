@@ -11,7 +11,7 @@ export default function AddPordect({categorys, getProdects}) {
 
   function addProdect() {
     if(title !== null && cid !== null && price !== null){
-      Axios.post("http://localhost:5000/prodect/add/", {title: title, cid: cid, price: price})
+      Axios.post("/prodect/add/", {title: title, cid: cid, price: price})
       .then(() => {
         newMessage("מוצר נוסף בהצלחה");
         getProdects();

@@ -11,7 +11,7 @@ export default function EditTable({table, getTables}) {
   const [tablePeople, setTablePeople] = useState();
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/tables/")
+    Axios.get("/tables/")
     .then(Res => (setTables(Res.data.tables)))
     .catch(err => console.log(err));
   }, []);
@@ -27,7 +27,7 @@ export default function EditTable({table, getTables}) {
       const exTable = tables.filter(tab => tab.close == 0 && tab.number == tableNumber);
 
       if(exTable.length < 1){
-        Axios.post("http://localhost:5000/tables/edit", {id: table._id, number: tableNumber, people: tablePeople})
+        Axios.post("/tables/edit", {id: table._id, number: tableNumber, people: tablePeople})
         .then(() => {
           newMessage("שולחן נשמר בהצלחה");
           getTables();

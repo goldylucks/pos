@@ -23,7 +23,7 @@ export default function Payment({table, getTables}){
     }
 
     function discountSave() {
-        Axios.post("http://localhost:5000/tables/discount", {id: table._id, discount: totalDiscount})
+        Axios.post("/tables/discount", {id: table._id, discount: totalDiscount})
         .then(() => {
             getTables();
         })
@@ -43,16 +43,16 @@ export default function Payment({table, getTables}){
 
     function paymant() {
         if((Number(pay) + Number(table.pay) + Number(table.discount)) >= Number(table.totalPrice)){
-            Axios.post("http://localhost:5000/tables/pay", {id: table._id, pay: Number(table.pay) + (Number(pay)-Number(change))})
+            Axios.post("/tables/pay", {id: table._id, pay: Number(table.pay) + (Number(pay)-Number(change))})
             .catch(err => console.log(err));
-            Axios.post("http://localhost:5000/tables/close", {id: table._id, close: 1})
+            Axios.post("/tables/close", {id: table._id, close: 1})
             .catch(err => console.log(err));
             
             newMessage(`שולחן שולם. עודף: ${currencyFormat.format(change)}`);
             history.push("/");
         }else{
             if(pay > 0){
-                Axios.post("http://localhost:5000/tables/pay", {id: table._id, pay: Number(table.pay) + Number(pay)})
+                Axios.post("/tables/pay", {id: table._id, pay: Number(table.pay) + Number(pay)})
                 .then(() => getTables())
                 .catch(err => console.log(err));
                 

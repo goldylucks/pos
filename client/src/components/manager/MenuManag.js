@@ -16,7 +16,7 @@ export default function MenuManag(newMessage) {
 
         // get categorys
         const getCategorys = async () => {
-            let data = await Axios.get("http://localhost:5000/category/")
+            let data = await Axios.get("/category/")
             .then((data) => data)
             .catch(err => console.log(err));
 
@@ -25,7 +25,7 @@ export default function MenuManag(newMessage) {
 
         // get prodects
         const getProdects = async () => {
-            let data = await Axios.get("http://localhost:5000/prodect/")
+            let data = await Axios.get("/prodect/")
             .then((data) => data)
             .catch(err => console.log(err));
 

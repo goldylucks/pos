@@ -15,7 +15,7 @@ export default function Statistics() {
 
     // Get Table 
     const getTables = () => {
-      Axios.get("http://localhost:5000/tables")
+      Axios.get("/tables")
       .then(Res => setTables(Res.data.tables))
       .catch(err => console.log(err));
     }
@@ -23,14 +23,14 @@ export default function Statistics() {
 
     // Get Orders
     const getOrders = () => {
-      Axios.get("http://localhost:5000/order/")
+      Axios.get("/order/")
       .then(Res => setOrders(Res.data.order))
       .catch(err => console.log(err));
     }
 
     // Get Pordects
     const getProdects = () => {
-      Axios.get("http://localhost:5000/prodect/")
+      Axios.get("/prodect/")
       .then(Res => setProdects(Res.data.prodect))
       .catch(err => console.log(err));
     }

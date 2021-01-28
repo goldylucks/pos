@@ -7,13 +7,13 @@ export default function Menu({tid, prodects, getOrders, totalBill}) {
 
     // Get category
     useEffect(() => {
-      Axios.get("http://localhost:5000/category/")
+      Axios.get("/category/")
       .then(Res => setCategorys(Res.data.category))
       .catch(err => console.log(err));
     }, []);
 
     const addOrder = (pid) => {
-      Axios.post("http://localhost:5000/order/add", {tid: tid, pid: pid})
+      Axios.post("/order/add", {tid: tid, pid: pid})
       .then(() => {
         getOrders();
       })
