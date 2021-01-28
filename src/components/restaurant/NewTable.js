@@ -17,7 +17,7 @@ export default function NewTable({tables}) {
       const exTable = tables.filter(tab => tab.close == 0 && tab.number == tableNumber);
 
       if(exTable.length < 1){
-        Axios.post("http://localhost:5000/tables/newTable", {number: tableNumber, people: tablePeople})
+        Axios.post("/tables/newTable", {number: tableNumber, people: tablePeople})
         .then(Res => {
           history.push(`/table/${Res.data.tableData._id}`);
           newMessage("שולחן נפתח בהצלחה");
