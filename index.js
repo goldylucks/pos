@@ -17,7 +17,7 @@ app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));
 // set up mongoose
 
 mongoose.connect(
-  process.env.MONGODB_CONNECTION_STRING,
+  "mongodb+srv://tuval:4388@cluster0.6nsfk.mongodb.net/pos?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
