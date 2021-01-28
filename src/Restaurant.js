@@ -21,7 +21,7 @@ export default function Restaurant() {
   });
 
   useEffect(() => {
-    Axios.get("/tables/")
+    Axios.get("backend/tables/")
     .then(Res => (setTables(Res.data.tables)))
     .catch(err => console.log(err));
   }, []);
