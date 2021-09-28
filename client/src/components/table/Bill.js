@@ -1,38 +1,40 @@
-export default function Bill({table, orders, prodects}) {
+export default function Bill({ table, orders, products }) {
+  const currencyFormat = new Intl.NumberFormat("he-HE", {
+    style: "currency",
+    currency: "ILS",
+  });
 
-  const currencyFormat = new Intl.NumberFormat('he-HE', { style: 'currency', currency: 'ILS' });
-
-  const DateFromat = new Intl.DateTimeFormat('he-He', {
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    });
+  const DateFromat = new Intl.DateTimeFormat("he-He", {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
 
   const ordersSum = () => {
     const sum = [];
     let x;
-     prodects.map((prodect) => {
-       const num = orders.filter((order) => order.pid == prodect._id && order.cansel !== 1);
-       if (num.length > 0) {
-         x++
-         sum.push({
-           id: x,
-           pid: prodect._id,
-           title: prodect.title,
-           price: prodect.price,
-           numbar: num.length,
-           sum: prodect.price * num.length,
-         });
-
-       }
+    products.map((product) => {
+      const num = orders.filter(
+        (order) => order.pid == product._id && order.cansel !== 1
+      );
+      if (num.length > 0) {
+        x++;
+        sum.push({
+          id: x,
+          pid: product._id,
+          title: product.title,
+          price: product.price,
+          numbar: num.length,
+          sum: product.price * num.length,
+        });
+      }
     });
 
     return sum;
-  }
-
+  };
 
   return (
     <div className="card">
@@ -70,9 +72,13 @@ export default function Bill({table, orders, prodects}) {
               {ordersSum().map((order) => (
                 <tr key={order.id}>
                   <td className="col-md-5">{order.title}</td>
-                  <td className="col-md-2">{currencyFormat.format(order.price)}</td>
+                  <td className="col-md-2">
+                    {currencyFormat.format(order.price)}
+                  </td>
                   <td className="col-md-2">{order.numbar}</td>
-                  <td className="col-md-3">{currencyFormat.format(order.sum)}</td>
+                  <td className="col-md-3">
+                    {currencyFormat.format(order.sum)}
+                  </td>
                 </tr>
               ))}
               <tr>
@@ -115,7 +121,7 @@ export default function Bill({table, orders, prodects}) {
         <div>
           <div className="col-md-6 m-auto mt-2">
             <p>
-              <b>תאריך:</b>   {DateFromat.format(Date.now())}
+              <b>תאריך:</b> {DateFromat.format(Date.now())}
             </p>
             <br />
           </div>

@@ -1,18 +1,18 @@
-import React, {useContext, memo} from "react";
+import React, { useContext, memo } from "react";
 import Axios from "axios";
 
-import {MessageContext} from "../../../utility/MessageContext";
+import { MessageContext } from "../../../utility/MessageContext";
 
-export default function DeleteCatagory({category, getCategorys}) {
-  const {newMessage} = useContext(MessageContext);
+export default function DeleteCatagory({ category, getCategorys }) {
+  const { newMessage } = useContext(MessageContext);
 
   function removeCategory() {
-    Axios.post("/category/remove/", {id: category._id})
-    .then(() => {
-      newMessage("קטגורייה נמחקה בהצלחה");
-      getCategorys();
-    })
-    .catch(err => console.log(err));
+    Axios.post("/category/remove/", { id: category._id })
+      .then(() => {
+        newMessage("קטגורייה נמחקה בהצלחה");
+        getCategorys();
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -25,9 +25,7 @@ export default function DeleteCatagory({category, getCategorys}) {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">
-              הסר קטגוריה
-            </h5>
+            <h5 className="modal-title">הסר קטגוריה</h5>
             <button
               type="button"
               className="btn-close"
@@ -36,16 +34,15 @@ export default function DeleteCatagory({category, getCategorys}) {
             ></button>
           </div>
           <div className="modal-body">
-            האם אתה בטוח שברצונך להסיר את קטגוריית 
-            "{category.title}"?
+            האם אתה בטוח שברצונך להסיר את קטגוריית "{category.title}"?
           </div>
           <div className="modal-footer">
-            <button 
-              type="button" 
-              className="btn btn-danger" 
+            <button
+              type="button"
+              className="btn btn-danger"
               data-bs-dismiss="modal"
               onClick={removeCategory}
-              >
+            >
               הסר
             </button>
 
